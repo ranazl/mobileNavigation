@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View , Image,Dimensions,TouchableHighlight,ScrollView,Button,TouchableOpacity} from 'react-native';
 import { createStackNavigator, createAppContainer,createBottomTabNavigator,createDrawerNavigator,createSwitchNavigator} from 'react-navigation';
-import SignIn from './SignIn'
+import SignIn from './src/page/SignIn'
+import MyHome from './src/page/MyHome'
 
 let dim = Dimensions.get('window');
 
@@ -10,14 +11,7 @@ class App extends Component{
 
  static navigationOptions = ({navigation}) => {
   return{
-    title:'Home',
-    // headerRight: (
-    //   <Button
-    //     onPress={navigation.getParam('increaseCount')}
-    //     title='+1'
-    //     color="#000"
-    //   />
-    // ),
+    title:'Welcome',
 
   }
  }
@@ -25,7 +19,7 @@ class App extends Component{
 
   render() {
     return (
-      <ScrollView>
+      // <ScrollView>
       <View style={styles.container}>
         
    {/* <TouchableOpacity style={styles.button} onPress={()=>this.props.navigation.navigate('Facebook',{text:this.state.text})}></TouchableOpacity> */}
@@ -33,32 +27,34 @@ class App extends Component{
         
         </View>
         <View style={styles.yellowColor}>
-        <Image source={require('./photo/book.png')}
-          style={{marginRight:130,marginBottom:100}}
+        <Image source={require('./src/assets/photo/book.png')}
+          style={styles.book}
           />
          
         </View>
         <Text style={styles.text}>Foxy</Text>  
-        <Text style={styles.text}>Book</Text> 
+        <Text style={styles.text}>Book</Text>
         <View style={styles.buttonLeft}>
         <TouchableOpacity onPress={()=> this.props.navigation.navigate('SignIn')}>
-        <Text style={{color:'white',fontWeight:'bold'}}>SIGNUP</Text>
+            <View style={styles.touch}>
+                <Text style={styles.textButton}>SIGNIN</Text>
+            </View>
         </TouchableOpacity>
-        </View>
+        </View> 
         <View style={styles.buttonRight}>
-        <Text style={{color:'white',fontWeight:'bold'}}>LOGIN</Text>
+        <Text style={styles.textButton}>LOGIN</Text>
         </View>
       </View>
-      </ScrollView>
+      // </ScrollView>
     );
   }
 }
 
-const AppNavigator  = createStackNavigator(
+const AppNavigator  = createSwitchNavigator(
   {
     Home : App,
     SignIn : SignIn,
-
+    MyHome : MyHome
   },
 
   {
@@ -71,18 +67,11 @@ const styles = StyleSheet.create({
     flex: 1,
     height:dim.height,
     backgroundColor: '#fb9600',
-    // justifyContent:'space-between'
-    // position:'relative',
-    // zIndex:-1
   },
   blueColor:{
     width:dim.width*4,
     height:150,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#206bec',
-    // position:'relative',
-    // zIndex:1,
     transform:[
       {rotateY:'-60deg'},
       {translateX:-2000},
@@ -90,13 +79,11 @@ const styles = StyleSheet.create({
   ]
   },
   yellowColor:{
-    width:dim.width*4,
+    width:1000,
     height:200,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffc107',
-    // position:'relative',
-    // zIndex:0,
     transform:[
       {rotateY:'-60deg'},
       {translateX:-1000},
@@ -133,7 +120,23 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     fontSize:30,
     marginLeft:165,
-  }
+  },
+  book:{
+    transform:[
+      {translateY:-70},
+      {translateX:300}
+    ]
+  },
+  touch:{
+    width:110,
+    height:45,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  textButton:{
+    color:'white',
+  fontWeight:'bold'
+}
 });
 
 export default createAppContainer(AppNavigator);
