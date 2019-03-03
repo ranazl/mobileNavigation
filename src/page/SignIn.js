@@ -107,7 +107,7 @@ const AppNavigator = createBottomTabNavigator(
   {
     Home:SignIn,
     SignUp:SignUp,
-    // MyHome:MyHome
+    // MyHome:MyHome,
   },
   {
     initialRouteName:'Home',
