@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,Image,TextInput,FlatList,ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { createStackNavigator, createAppContainer,createBottomTabNavigator,createDrawerNavigator,createSwitchNavigator} from 'react-navigation';
 import Books from '../component/Books'
 import SignIn from './SignIn'
 import Section from './Section'
+import Card from './Card'
 
 class MyHome extends Component {
+  
     render() {
         return (
             <ScrollView>
@@ -70,9 +73,32 @@ class MyHome extends Component {
 
 const AppNavigator = createBottomTabNavigator (
     {
-        Home : MyHome,
-        // SignIn : SignIn,
-        Papular : Section
+        Home :{
+          screen: MyHome,
+          navigationOptions: {
+              tabBarIcon: ({tintColor: color}) => (
+                  <Icon name="home" size={25} color={'white'}/>
+              )
+          }
+      },
+      
+        Papular :{
+          screen: Section,
+          navigationOptions: {
+              tabBarIcon: ({tintColor: color}) => (
+                  <Icon name="history" size={25} color={'white'}/>
+              )
+          }
+      },
+
+        Next:{
+          screen:Card,
+          navigationOptions:{
+            tabBarIcon:({tintColor:color}) => (
+              <Icon name="arrow-right" size={25} color={'white'} />
+            )
+          }
+        }
     },
     {
         tabBarOptions: {
@@ -82,7 +108,7 @@ const AppNavigator = createBottomTabNavigator (
             labelStyle :{
                 color:'white',
                 fontSize:16
-            }
+            },
             
           },
     },

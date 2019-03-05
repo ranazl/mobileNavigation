@@ -71,27 +71,27 @@ class Section extends Component {
     }
 }
 
-const AppNavigator = createBottomTabNavigator (
-    {
-        Home : Section,
-        Next : Card
-    },
-    {
-        tabBarOptions: {
-            style:{
-                backgroundColor: '#3b83ff',
-            },
-            labelStyle :{
-                color:'white',
-                fontSize:16
-            }
+// const AppNavigator = createBottomTabNavigator (
+//     {
+//         Home : Section,
+//         Next : Card
+//     },
+//     {
+//         tabBarOptions: {
+//             style:{
+//                 backgroundColor: '#3b83ff',
+//             },
+//             labelStyle :{
+//                 color:'white',
+//                 fontSize:16
+//             }
             
-          },
-    },
-    {
-        initialRouteName: 'Home'
-    }
-)
+//           },
+//     },
+//     {
+//         initialRouteName: 'Home'
+//     }
+// )
 
 const styles = StyleSheet.create({
     container: {
@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default createAppContainer(AppNavigator);
+export default Section;

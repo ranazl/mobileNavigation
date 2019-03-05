@@ -9,4 +9,4 @@ import SignIn from './src/page/SignIn';
 import Card from './src/page/Card';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => Card);
+AppRegistry.registerComponent(appName, () => App);
