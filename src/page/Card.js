@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { Rating, AirbnbRating } from 'react-native-ratings';
 
 class Card extends Component {
   constructor(props){
@@ -37,20 +38,22 @@ button() {
           </View>
           <View style={{ marginHorizontal: 15, marginBottom: 40 }}>
             <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
+              style={{ flexDirection: "row", justifyContent: "space-between"}}
             >
               <Text style={styles.text1}>sally rooney</Text>
               <Image source={require("../assets/photo/save.png")} />
             </View>
             <Text style={styles.text2}>conversation with friends</Text>
-            <View style={{ flexDirection: "row", marginTop: 15 }}>
-{console.log(this.state.buttonOn)}
+            <View style={{alignItems:'flex-start',justifyContent:'flex-start'}}>
+            <AirbnbRating size={15}/>
+            </View>
+            {/* <View style={{ flexDirection: "row", marginTop: 15 }}>
               <View style={!this.state.buttonOn ? <Image source={require("../assets/photo/star.png")} /> : <Image source={require("../assets/photo/star_off.png")} />}>
               <TouchableOpacity onPress={() => this.button.bind(this)}>
                 <Image source={require("../assets/photo/star.png")} />
               </TouchableOpacity>
               </View>
-              <TouchableOpacity>
+               <TouchableOpacity> 
                 <Image source={require("../assets/photo/star.png")} />
               </TouchableOpacity>
               <TouchableOpacity>
@@ -62,7 +65,7 @@ button() {
               <TouchableOpacity>
                 <Image source={require("../assets/photo/star.png")} />
               </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={{ flexDirection: "row", marginTop: 15}}>
               <View style={styles.box1}><Text style={{color:'white'}}>Transgressive</Text></View>
               <View style={styles.box2}><Text style={{color:'white'}}>Fiction</Text></View>
@@ -158,7 +161,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     color: "white",
-    fontSize: 19
+    fontSize: 19,
   },
   box1:{
       width:120,
